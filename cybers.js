@@ -19,27 +19,7 @@ var map;
 		  "#CBC9E2": "1.1 to 2%",
 		  "#F2F0F7": "Less than 1%"
         };
-	//bins_charter = {
-    //       "#2E3F8A": "<strong>High</strong> (32.9 to 100%)",
-	//	   "#4A60C3": "<strong>Above average</strong> (26.4 to 32.8%)",
-	//	   "#8A98D8": "<strong>Below average</strong> (20.0 to 26.3%)",
-	//	   "#CAD0ED": "<strong>Low</strong> (0 to 19.9%)"
-    //    };
 
-	//bins_specAdmit = {
-	//      "#2E3F8A": "<strong>High</strong> (26.8 to 100%)",
-	//	  "#4A60C3": "<strong>Above average</strong> (18.4 to 26.7%)",
-	//	  "#8A98D8": "<strong>Below average</strong> (10.0 to 18.3%)",
-	//	  "#CAD0ED": "<strong>Low</strong> (0 to 9.9%)"
-    //    };
-		
-	//bins_cityWide = {
-    //      "#2E3F8A": "<strong>High</strong> (14.4 to 100%)",
-	//	  "#4A60C3": "<strong>Above average</strong> (11.2 to 14.3%)",
-	//	  "#8A98D8": "<strong>Below average</strong> (8.1 to 11.1%)",
-	//	  "#CAD0ED": "<strong>Low</strong> (0 to 8.0%)" 
-    //    };
-	
 	var title_pCyber = 'Percent of students attending a <span style="text-decoration:underline;">Cyber Charter</span> school'; 
 	//var title_charter = 'Percent of students attending a <span style="text-decoration:underline;">charter</span> high school';
 	//var title_specAdmit = 'Percent of students attending a <span style="text-decoration:underline;">magnet</span> high school';
@@ -129,42 +109,17 @@ var map;
       }
     }
 	
-   var LayerActions = {
-      none: function(){
-          layers[1].setQuery("SELECT * FROM philadelphiaschools201201");
-		  layers[1].setCartoCSS("#philadelphiaschools201201 {[mapnik-geometry-type=point] {marker-fill: #FF0000;marker-opacity: 0; marker-line-opacity: 0; }} ");
-          return true;
-        },
-	  pcharter: function(){
-          layers[0].setCartoCSS("#newsworks_hscatchment{line-color: #FFF;line-opacity: 0.7;line-width: 0.5;polygon-opacity: 0.8;}#newsworks_hscatchment [ pcharterall <= 100] {polygon-fill: #2E3F8A;}#newsworks_hscatchment [ pcharterall <= 32.9] {polygon-fill: #4A60C3;}#newsworks_hscatchment [ pcharterall <= 26.4] {polygon-fill: #8A98D8;}#newsworks_hscatchment [ pcharterall <= 20.0]  {polygon-fill: #CAD0ED;}");
-          layers[1].setQuery("SELECT * FROM philadelphiaschools201201 WHERE instit_typ = 'Charter' AND grade_leve like '%High%' AND facil_type = 'School' AND active = 'y'");
-		 layers[1].setCartoCSS("#philadelphiaschools201201 {[mapnik-geometry-type=point] {marker-fill: #FFFFFF;marker-opacity: .7; marker-width: 4; marker-line-opacity: 0; marker-placement: point;marker-type: ellipse;marker-allow-overlap: true;}} ");
-		  CartoDBLegend(bins_charter,title_charter);
-		  return true;
-        },
-	  pneighborhood: function(){
-		  layers[0].setCartoCSS("#newsworks_hscatchment{line-color: #FFF;line-opacity: 0.7;line-width: 0.5;polygon-opacity: 0.8;}#newsworks_hscatchment [ p_innabe <= 100] {polygon-fill: #2E3F8A;}#newsworks_hscatchment [ p_innabe <= 40.7] {polygon-fill: #4A60C3;} #newsworks_hscatchment [ p_innabe <= 30.7] {polygon-fill: #8A98D8;}#newsworks_hscatchment [ p_innabe <= 20.7]{polygon-fill: #CAD0ED;}");
-          layers[1].setQuery("SELECT * FROM philadelphiaschools201201 WHERE instit_typ = 'District' AND grade_leve like '%High%' AND facil_type = 'School' AND active = 'y' AND type IS NULL ");
-		  layers[1].setCartoCSS("#philadelphiaschools201201 {[mapnik-geometry-type=point] {marker-fill: #FFFFFF;marker-opacity: .7; marker-width: 4; marker-line-opacity: 0; marker-placement: point;marker-type: ellipse;marker-allow-overlap: true;}} ");
-		  CartoDBLegend(bins_nabe,title_nabe);
-		  return true;
-        },
-	  pSpecAdmit: function(){
-		  layers[0].setCartoCSS("#newsworks_hscatchment{line-color: #FFF;line-opacity: 0.7;line-width: 0.5;polygon-opacity: 0.8;}#newsworks_hscatchment [ pspecadmit <= 100]{polygon-fill: #2E3F8A;}#newsworks_hscatchment [ pspecadmit <= 26.8] {polygon-fill: #4A60C3;}#newsworks_hscatchment [ pspecadmit <= 18.4] {polygon-fill: #8A98D8;}#newsworks_hscatchment [ pspecadmit <= 10.0] {polygon-fill: #CAD0ED;polygon-opacity: 0.9;}");
-          layers[1].setQuery("SELECT * FROM philadelphiaschools201201 WHERE type = 'Special Admission' AND grade_leve like '%High%' AND facil_type = 'School' AND active = 'y'");
-		  layers[1].setCartoCSS("#philadelphiaschools201201 {[mapnik-geometry-type=point] {marker-fill: #FFFFFF;marker-opacity: .7; marker-width: 4; marker-line-opacity: 0; marker-placement: point;marker-type: ellipse;marker-allow-overlap: true;}} ");
-		  CartoDBLegend(bins_specAdmit,title_specAdmit);
-		  return true;
-        },		
-	  pCitywide: function(){
-		  layers[0].setCartoCSS("#newsworks_hscatchment{line-color: #FFF;line-opacity: 0.7;line-width: 0.5;polygon-opacity: 0.8;}#newsworks_hscatchment [ pcitymiltcte <= 100] {polygon-fill: #2E3F8A;}#newsworks_hscatchment [ pcitymiltcte <= 14.4] {polygon-fill: #4A60C3;}#newsworks_hscatchment [ pcitymiltcte <= 11.2] {polygon-fill: #8A98D8;}#newsworks_hscatchment [ pcitymiltcte <= 8.1] {polygon-fill: #CAD0ED;}");
-          layers[1].setQuery("SELECT * FROM philadelphiaschools201201 WHERE type = 'Citywide Admission' AND grade_leve like '%High%' AND facil_type = 'School' AND active = 'y'");
-		  layers[1].setCartoCSS("#philadelphiaschools201201 {[mapnik-geometry-type=point] {marker-fill: #FFFFFF;marker-opacity: .7; marker-width: 4; marker-line-opacity: 0; marker-placement: point;marker-type: ellipse;marker-allow-overlap: true;}} ");
-		  CartoDBLegend(bins_cityWide,title_cityWide);
-		  return true;
-        }	
-    }	
-
+   
+//activating search using search string from search box   
+$(document).ready(function(){
+  $("button").click(function(){
+    $.get("http://manetomapping.cartodb.com/api/v2/sql?q=SELECT labelname, geoid  FROM cybercharters WHERE labelname = 'Benton Area School District' LIMIT 1",function(data,status){
+      alert("Data: " + data + "\nStatus: " + status);
+    });
+  });
+}); 
+ 
+//Hover event to show name of school district using the map
  function showTooltip(data,point) {
       var html = "";
      
@@ -180,6 +135,8 @@ var map;
     function hideTooltip() {
       $("#tooltip").hide();
     }
+
+
 
 //Autocomplete for school district search
  $(function() {
