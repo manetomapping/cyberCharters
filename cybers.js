@@ -111,11 +111,12 @@ var map;
 	
    
 //activating search using search string from search box   
-var searchstring = $('#tags').val(); 
+
 $(document).ready(function(){
   $("button").click(function(){
+    var searchstring = $('#tags').val(); 
     $.get("http://manetomapping.cartodb.com/api/v2/sql?q=SELECT labelname, geoid  FROM cybercharters WHERE labelname ='" +searchstring+ "' LIMIT 1",function(data,status){
-      alert("Data: " + data + "\nStatus: " + status);
+     alert("Data: " + data + "\nStatus: " + status);
     });
   });
 }); 
