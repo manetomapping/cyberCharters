@@ -111,14 +111,14 @@ var map;
 	
    
 //activating search using search string from search box   
+var searchstring = $('#tags').val(); 
 $(document).ready(function(){
   $("button").click(function(){
-    $.get("http://manetomapping.cartodb.com/api/v2/sql?q=SELECT labelname, geoid  FROM cybercharters WHERE labelname = 'Benton Area School District' LIMIT 1",function(data,status){
+    $.get("http://manetomapping.cartodb.com/api/v2/sql?q=SELECT labelname, geoid  FROM cybercharters WHERE labelname ='" +searchstring+ "' LIMIT 1",function(data,status){
       alert("Data: " + data + "\nStatus: " + status);
     });
   });
 }); 
- 
 //Hover event to show name of school district using the map
  function showTooltip(data,point) {
       var html = "";
