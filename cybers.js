@@ -21,19 +21,13 @@ var map;
         };
 
 	var title_pCyber = 'Percent of students attending a <span style="text-decoration:underline;">Cyber Charter</span> school'; 
-	//var title_charter = 'Percent of students attending a <span style="text-decoration:underline;">charter</span> high school';
-	//var title_specAdmit = 'Percent of students attending a <span style="text-decoration:underline;">magnet</span> high school';
-	//var title_cityWide = 'Percent of students attending a <span style="text-decoration:underline;">citywide, vo-tech, or military</span> high school';
 
     L.tileLayer('https://dnv9my2eseobd.cloudfront.net/v3/cartodb.map-4xtxp73f/{z}/{x}/{y}.png', {
       attribution: 'Map by <a href="http://www.manetomapping.com">Michelle Schmitt</a> and Todd Vachon for <a href="http://www.newsworks.org">NewsWorks.org</a>'
     }).addTo(map);
 	
-
-    
 	var layerUrl_cybers = 'http://manetomapping.cartodb.com/api/v1/viz/cybercharters/viz.json';
 	
-
     var layerOptions_cybers = {
             query: "SELECT * FROM cybercharters",
             tile_style: "#cybercharters{line-color: #FFF;line-opacity: 1;line-width: 1;polygon-opacity: 0.8;}#cybercharters [ pct_enroll_13 <= 18] {polygon-fill: #54278F;}#cybercharters [ pct_enroll_13 <= 7] {polygon-fill: #756BB1;}#cybercharters [ pct_enroll_13 <= 4] {polygon-fill: #9E9AC8;}#cybercharters [ pct_enroll_13 <= 2] { polygon-fill: #CBC9E2;}#cybercharters [ pct_enroll_13 <= 1] {polygon-fill: #F2F0F7;}",
@@ -67,27 +61,14 @@ var map;
 	
 	});
 	
-	
-	$('#c2').click(function() {
-		if ($(this).is(':checked')) {
-			layers[2].setQuery("SELECT * FROM philadelphiaschools201201_closures  WHERE action Like '%Close%' AND facil_type = 'School' AND grade_leve like '%High%'");
-			layers[2].setCartoCSS("#philadelphiaschools201201_closures  {[mapnik-geometry-type=point] {marker-fill: #FF0000;marker-opacity: 1; marker-width: 4; marker-line-opacity: 0; marker-placement: point;marker-type: ellipse;marker-allow-overlap: true;}} ");
-			return true;
-        }
-		else{
-			layers[2].setQuery("SELECT * FROM philadelphiaschools201201_closures where cartodb_id = 0 ");
-			return true;
-		}
-	});
-	
-    $('.button').click(function(){
-      $('.button').removeClass('selected'); $(this).addClass('selected');
-      LayerActions[$(this).attr('id')]();
-    })	
-
+		
 	function legendClear(){
 		$("#legend").empty();
 	};
+	function infoTableClear(){
+		$("#table").empty();
+	};
+
 	
 	function CartoDBLegend(bins,title){
 	  legendClear();
@@ -110,16 +91,37 @@ var map;
     }
 	
    
-//activating search using search string from search box   
+//activating search using search string from search box  
+//
+	function searchBoxClear(){
+		$("#tags").empty();
+	};
+	
+	searchBoxClear();
 
-$(document).ready(function(){
-  $("button").click(function(){
-    var searchstring = $('#tags').val(); 
-    $.get("http://manetomapping.cartodb.com/api/v2/sql?q=SELECT labelname, geoid  FROM cybercharters WHERE labelname ='" +searchstring+ "' LIMIT 1",function(data,status){
-     alert("Data: " + data + "\nStatus: " + status);
-    });
-  });
-}); 
+$table = "<table id = 'resultTable'><td>nr</td><td>Geoid</td><td>Name</td><tr>";
+
+	$(document).ready(function(){
+		$("button").click(function(){
+		var searchstring = $('#tags').val(); 
+		$.getJSON("http://manetomapping.cartodb.com/api/v2/sql?q=SELECT labelname, geoid  FROM cybercharters WHERE labelname ='" +searchstring+ "' LIMIT 1", function(data) {
+			$table += "<tr>";
+			$table += "<td>" + i + "</td>";
+
+			$table += "<td>" + data.rows[0].geoid + "</td>";
+			$table += "<td>" + data.rows[0].labelname + "</td>";
+			//$table += "<td>" + data.rows[0].endTime + "</td>";
+			//$table += "<td>" + data.rows[0].startArea + "</td>";
+			//$table += "<td>" + data.rows[0].duration + "</td>";
+			$table += "</tr>";
+			$('body').append($table);
+			$table = "<table id = 'resultTable'><td>nr</td><td>geoid</td><td>Name</td><tr>";
+		});
+	 
+		});
+	});
+
+
 //Hover event to show name of school district using the map
  function showTooltip(data,point) {
       var html = "";
