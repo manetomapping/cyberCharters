@@ -8,7 +8,7 @@ var map;
 	
     // initiate leaflet map
     map = new L.Map('map', { 
-      center: [ 40.805494,-77.233887],
+      center: [ 40.5,-77.6],
       zoom: 7
     })
 
@@ -114,7 +114,7 @@ $table = "<table id = 'resultTable'><td>nr</td><td>Geoid</td><td>Name</td><tr>";
 			//$table += "<td>" + data.rows[0].startArea + "</td>";
 			//$table += "<td>" + data.rows[0].duration + "</td>";
 			$table += "</tr>";
-			$('body').append($table);
+			$('#infoTable').append($table);
 			$table = "<table id = 'resultTable'><td>nr</td><td>geoid</td><td>Name</td><tr>";
 		});
 	 

@@ -1,13 +1,21 @@
-<!-- START EDIT -->
 
-html, body {padding: 0; margin: 0; }
-    #map { width: 100%; height:100%; background: black; }
+
+
+
+html, body {
+	padding: 0; 
+	margin: 0; 
+	font-family: helvetica, arial, sans-serif;
+	
+	}
+	
+    #map { width: 600px; height:600px; background: black; }
            
                 
 
 #mapheader {position: absolute; top: 85; left: 50;}
 
-#mapheader-es {position: absolute; top: 105; left: 50;}
+#mapheader-es {position: absolute; top: 105; left: 50; }
 
 #menu, #menu-es {
  	width: 520px; height:38px;
@@ -19,100 +27,32 @@ html, body {padding: 0; margin: 0; }
 }
 
 #title {
-		padding: 0 10px 5px 10px;
-		color: fff;
+		
+		padding: 0 0 0 120px;
+		color: #444;
 		position: absolute; 
-		top: 10; 
-		left: 60;
+		top: 0; 
+		left: 0;
 		width: 500px;
 		font-family: helvetica, arial, sans-serif;
-		background: rgba(0,0,0,0.50);
-		-moz-border-radius: 5px;
-		border-radius: 5px;
+		background: rgba(255,255,255,0.90);
+		
+		width: 480px;
+		-webkit-box-shadow: 0px 5px 9px 5px rgba(0,0,0,0.5);
+-moz-box-shadow: 0px 5px 9px 5px rgba(0,0,0,0.5);
+box-shadow: 0px 5px 9px 5px rgba(0,0,0,0.5);
+
 }
 
 #title h1 {font-weight: bold; font-size: 19px; margin-bottom: 2px;}
-#title p {color: #ccc; font-weight: bold; font-size: 11px; margin-top: 2px;}
-
-#menu a.selected { 
-     color: #000;
-     background: #c3d9ff; /* Old browsers */
-     background: -moz-linear-gradient(top, #c3d9ff 0%, #b1c8ef 41%, #98b0d9 100%); /* FF3.6+ */
-     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c3d9ff), color-stop(41%,#b1c8ef), color-stop(100%,#98b0d9)); /* Chrome,Safari4+ */
-     background: -webkit-linear-gradient(top, #c3d9ff 0%,#b1c8ef 41%,#98b0d9 100%); /* Chrome10+,Safari5.1+ */
-     background: -o-linear-gradient(top, #c3d9ff 0%,#b1c8ef 41%,#98b0d9 100%); /* Opera 11.10+ */
-     background: -ms-linear-gradient(top, #c3d9ff 0%,#b1c8ef 41%,#98b0d9 100%); /* IE10+ */
-     background: linear-gradient(to bottom, #c3d9ff 0%,#b1c8ef 41%,#98b0d9 100%); /* W3C */
-     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3d9ff', endColorstr='#98b0d9',GradientType=0 ); /* IE6-9 */filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
-
-	-moz-box-shadow: inset 0 0 1px 1px #000;
-	-webkit-box-shadow: inset 0 0 1px 1px #000;
-	box-shadow: inset 0 0 1px 1px #000;
-	-moz-border-radius: 2px;
-	border-radius: 2px;
-}
-#menu-es a.selected { 
-     color: #000;
-     background: #c3d9ff; /* Old browsers */
-     background: -moz-linear-gradient(top, #ffc2d7 0%, #f0b1db 48.34%, #d1628c 100%); /* FF3.6+ */
-     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffc2d7), color-stop(48%,#f0b1db), color-stop(100%,#d1628c)); /* Chrome,Safari4+ */
-     background: -webkit-linear-gradient(top, #ffc2d7 0%, #f0b1db 48.34%, #d1628c 100%); /* Chrome10+,Safari5.1+ */
-     background: -o-linear-gradient(top, #ffc2d7 0%, #f0b1db 48.34%, #d1628c 100%); /* Opera 11.10+ */
-     background: -ms-linear-gradient(top, #ffc2d7 0%, #f0b1db 48.34%, #d1628c 100%); /* IE10+ */
-     background: linear-gradient(top, #ffc2d7 0%, #f0b1db 48.34%, #d1628c 100%); /* W3C */
-     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc2d7', endColorstr='#d1628c',GradientType=0 ); /* IE6-9 */filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc2d7', endColorstr='#d1628c',GradientType=0 ); /* IE6-9 */
-
-	-moz-box-shadow: inset 0 0 1px 1px #000;
-	-webkit-box-shadow: inset 0 0 1px 1px #000;
-	box-shadow: inset 0 0 1px 1px #000;
-	-moz-border-radius: 2px;
-	border-radius: 2px;
-}
+#title p {color: #444; font-weight: bold; font-size: 11px; margin-top: 2px;}
 
 
 
-.menubuttons {
-	list-style: none;  
-	background: #eeeeee; /* Old browsers */
-	background: -moz-linear-gradient(top,  #eeeeee 0%, #cccccc 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #eeeeee 0%,#cccccc 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
-
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	-moz-box-shadow: 0 0 1px 1px #9c9c9c;
-	-webkit-box-shadow: 0 0 1px 1px #9c9c9c;
-	box-shadow: 0 0 1px 1px #9c9c9c;
-	
-}
-
-
-.menubuttons a{
-	float: left;
-	height: 25px;
-	padding: 12px 30px 0  30px;
-	color: #444;
-	text-transform: uppercase;
-	font: bold 12px Arial, Helvetica;
-	text-decoration: none;
-	/* text-shadow: 0 1px 0 #000; */
-	border-right: 1px solid #fff;
-	border-left: 1px solid #777;
-}
 
 a:active {
 	color: #3F52A6;
 }
-
-
-
-#menu a.first, #submenu a.first, #menu-es a.first {border-left: 0px solid #fff;}
-#menu a.last, #submenu a.last, #menu-es a.last {border-right: 0px solid #fff;}
-
 
 
 /* Clear floated elements */
@@ -127,58 +67,13 @@ a:active {
 
 * html #menu { zoom: 1; } /* IE6 */
 
-/* checkboxes */
-div#show, div#show-es {
-	font-weight: bold;
-    padding:5px 0 0 10px;
-    background:#494949;
-    position: absolute; top: 123; left: 72; width: 200px; height:26px;
-	margin: 12px 0 0 0px;
-	-moz-box-shadow: inset 0px 0px 5px #000;
-	-webkit-box-shadow: inset 0px 0px 5px #000;
-	box-shadow: inset 0px 0px 5px #000;
-}
-
-div#show-es {
-    position: absolute; top: 143; left: 72; 
-
-}
-
-
-
-input[type="checkbox"] {
-    display:none;
-}
-
-input[type="checkbox"] + label {
-    color:#f2f2f2;
-    font-family:Helvetica, Arial, sans-serif;
-    font-size:12px;
-    padding-left: 10px;
-}
-
-input[type="checkbox"] + label span {
-    display:inline-block;
-    width:19px;
-    height:19px;
-    margin:-1px 4px 0 0;
-    vertical-align:middle;
-    background:url(check_radio_sheet.png) left top no-repeat;
-    cursor:pointer;
-}
-
-input[type="checkbox"]:checked + label span {
-    background:url(check_radio_sheet.png) -19px top no-repeat;
-}
-
-/* END CHECKBOXES */
-           
-#legend { position: absolute; left: 50px; top: 300px; width: 235px; padding: 0px;  
+#legend { position: absolute; left: 35px; top: 450px; width: 515px; padding: 0px;  
 			background: -webkit-linear-gradient(#F9F9F9, #E1E1E1); 
 			background: -moz-linear-gradient(#F9F9F9, #E1E1E1);
 			background: -o-linear-gradient(#F9F9F9, #E1E1E1);
             background: linear-gradient(#F9F9F9,#E1E1E1); 
-			z-index: 99; font-family: Arial, Helvetica, sans-serif;
+			z-index: 99; 
+			font-family: Arial, Helvetica, sans-serif;
 			-webkit-border-radius: 5px;
 			-moz-border-radius: 5px;
 			border-radius: 5px;
@@ -190,11 +85,11 @@ input[type="checkbox"]:checked + label span {
 			-webkit-box-shadow: inset 0 0 5px #000000;
 			box-shadow:         inset 0 0 5px #000000;}
     #legend .title, 
-    #legend .row { position: relative; float: left; width: 230px; background: none; padding: 5; margin: 0; font-size: 12px; }
-    #legend .title {font-weight: bold; font-size: 13px;}
-    #legend .row span { float: left; padding: 0; margin: 0; }
+    #legend .row { position: relative; float: left; width: 70px; background: none; padding: 5; margin: 0; font-size: 12px; }
+    #legend .title {font-weight: bold; font-size: 13px; height: 20px; width: 500px;}
+    #legend .row span {float: left; padding: 0; margin: 0;}
     
-    #legend .row span.box { width: 20px; height: 20px; background: black; margin: 2px; border: 1px solid #BBB;}
+      #legend .row span.box { width: 20px; height: 20px; background: black; margin: 2px; border: 1px solid #BBB;}
     #legend .row span.line { width: 20px; height: 6px; background: black; margin: 2px; margin-top: 11px; border: 1px solid #BBB;}
     #legend .row span.circle { width: 20px; height: 20px; background: black; margin: 2px; border: 1px solid #BBB; border-radius: 50%;}
 
@@ -303,6 +198,61 @@ font-family: "Helvetica",Arial;
 
 
 #legend .row span.value { line-height: 18px; margin: 5px; max-width: 192px;}
+
+#resultTable {
+	width: 600px; 
+	background-color: #f5f5f5;
+	min-height: 220px;
+	padding: 20px;
+	
+	position: relative;
+	top: 50px;
+}
+
+#infoTable {
+	background-color: #f5f5f5; 
+	height:55px; 
+	width: 600px;
+	
+	}
+	
+.ui-widget {
+	position: relative;
+	top: 525px;
+	left: -18px;
+}
+
+#tags {
+		-webkit-border-radius: 14px;
+		-moz-border-radius: 14px;
+		border-radius: 14px;
+		-webkit-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.75);
+		-moz-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.75);
+		box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.75);
+		border: none; 
+		padding-left: 20px;
+		width: 450px;
+}
+
+#searchbutton {
+		-webkit-border-radius: 14px;
+		-moz-border-radius: 14px;
+		border-radius: 14px;
+		border: 1px solid rgba(0, 0, 0, 0.05);
+		border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+		margin: 2px;
+		font-size: 14px;
+		background-color: #444;
+		color: white;
+		position: relative;
+		top: -2px;
+		left: 
+}
+
+
+
+
+
 
 /* Custom scrollbars for webkit - forces scrollbar on Mountain Lion*/
 ::-webkit-scrollbar {
