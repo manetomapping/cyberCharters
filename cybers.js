@@ -8,7 +8,7 @@ var map;
 	
     // initiate leaflet map
     map = new L.Map('map', { 
-      center: [ 40.5,-77.6],
+      center: [ 39.9,-77.7],
       zoom: 7
     })
 
@@ -20,17 +20,17 @@ var map;
 		  "#f79e9b": "Less than 14.89%"
         };
 
-	var title_pCyber = 'Percent change in the number of students attending a <span style="text-decoration:underline;">Cyber Charter</span> school, 2010 to 2013'; 
+	var title_pCyber = 'Percent change in estimated payments to <span style="text-decoration:underline;">Cyber Charters</span>, 2010 to 2013*'; 
 
     L.tileLayer('http://{s}.tile.cloudmade.com/15ff4c5331ce43558da101738bb53492/72990/256/{z}/{x}/{y}.png', {
-      attribution: '', key: '15ff4c5331ce43558da101738bb53492'
+      attribution: 'Map by <a href="http://www.manetomapping.com">Michelle Schmitt</a> and Todd Vachon for <a href="http://www.newsworks.org">NewsWorks.org</a>;Data Analysis by<a href="http://www.researchforaction.org">Research for Action</a>', key: '15ff4c5331ce43558da101738bb53492'
     }).addTo(map);
 	
 	var layerUrl_cybers = 'http://manetomapping.cartodb.com/api/v1/viz/cybercharters/viz.json';
 	
     var layerOptions_cybers = {
             query: "SELECT * FROM cybercharters",
-            tile_style: "#cybercharters{line-color: #666;line-opacity: .5;line-width: .5; polygon-opacity: 0.6;}#cybercharters [ pct_change_10_13 <= 600.0] {polygon-fill: #6b1e1b;}#cybercharters [ pct_change_10_13 <= 283.33] {polygon-fill: #9e2c27;}#cybercharters [ pct_change_10_13 <= 112.5] {polygon-fill: #f0433c;}#cybercharters [ pct_change_10_13 <= 46.15] { polygon-fill: #f4716b;}#cybercharters [ pct_change_10_13 <= 14.89] {polygon-fill: #f79e9b;}",
+            tile_style: "#cybercharters{line-color: #666;line-opacity: .5;line-width: .5; polygon-opacity: 0.6;}#cybercharters [ pct_change_10_13 <= 600.0] {polygon-fill: #6b1e1b;}#cybercharters [ pct_change_10_13 <= 283.33] {polygon-fill: #9e2c27;}#cybercharters [ pct_change_10_13 <= 112.5] {polygon-fill: #f0433c;}#cybercharters [ pct_change_10_13 <= 46.15] { polygon-fill: #f4716b;}#cybercharters [ pct_change_10_13 <= 14.89] {polygon-fill: #ccc;}",
 			interactivity: "labelname",
 			infowindow: false,
 			cartodb_logo: false	
@@ -111,19 +111,21 @@ $table = "<div id = 'resultTable_container'>"
 		$.getJSON("http://manetomapping.cartodb.com/api/v2/sql?q=SELECT labelname, geoid, Total_Exp_Cyber_10, Total_Exp_Cyber_13, PCT_exp_change_10_13, Total_Cyber_10, Total_Cyber_13, Pct_change_10_13, Exp_reg13, Exp_spc13  FROM cybercharters WHERE labelname ='" +searchstring+ "' LIMIT 1", function(data) {
 			
 			$table += "<p><strong>" + data.rows[0].labelname + "</strong></p>";
-			$table += "<table id ='resultTable' ><tr><td></td><td>2010</td><td>2013</td><td><strong>% change</strong></td></tr>";
+			$table += "<table id ='resultTable' ><tr><td></td><td><strong>2010</strong></td><td><strong>2013</strong></td><td><strong>Change</strong></td></tr>";
 			$table += "<tr><td>Cyber Charter Expenditures</td>";
-			$table += "<td>" + data.rows[0].total_exp_cyber_10  + "</td>";
-			$table += "<td>" + data.rows[0].total_exp_cyber_13 + "</td>";
-			$table += "<td><strong>" + data.rows[0].pct_exp_change_10_13 + "</strong></td>";
+			$table += "<td>$" + data.rows[0].total_exp_cyber_10  + "</td>";
+			$table += "<td>$" + data.rows[0].total_exp_cyber_13 + "</td>";
+			$table += "<td><strong>" + data.rows[0].pct_exp_change_10_13 + "%</strong></td>";
 			$table += "</tr><tr>";
 			$table += "<td>Cyber Charter Enrollment</td>";
 			$table += "<td>" + data.rows[0].total_cyber_10  + "</td>";
 			$table += "<td>" + data.rows[0].total_cyber_13 + "</td>";
-			$table += "<td><strong>" + data.rows[0].pct_change_10_13 + "</strong></td>";
+			$table += "<td><strong>" + data.rows[0].pct_change_10_13 + "%</strong></td>";
 			$table += "</tr></table>";
-			$table += "Per ADM expenditure for non-special CS in 2013" + data.rows[0].exp_reg13 + "<br />";
-			$table += "Per ADM expenditure for special CS in 2013" + data.rows[0].exp_spc13 + "</div>";
+			$table += "<div id='admstuff'>";
+			$table += "Per ADM expenditure for non-special CS in 2013 $" + data.rows[0].exp_reg13 + "<br />";
+			$table += "Per ADM expenditure for special CS in 2013 $" + data.rows[0].exp_spc13 + "</div>";
+			$table += "</div>";
 			$('#infoTable').append($table);
 			//$table = "<table id = 'resultTable'><td>2010</td><td>2013</td><td>% change</td><tr>";
 		});
