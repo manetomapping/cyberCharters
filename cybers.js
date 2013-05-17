@@ -13,14 +13,14 @@ var map;
     })
 
 	bins_pCyber = {
-		  "#54278F": "6.1 to 18%",
-          "#756BB1": "4.1 to 6%",
-		  "#9E9AC8": "2.1 to 4%",
-		  "#CBC9E2": "1.1 to 2%",
-		  "#F2F0F7": "Less than 1%"
+  		  "#54278F": "283.4% or more",
+          "#756BB1": "112.6 to 283.3%",
+		  "#9E9AC8": "46.3 to 112.5%",
+		  "#CBC9E2": "14.9 to 46.2%",
+		  "#F2F0F7": "Less than 14.89%"
         };
 
-	var title_pCyber = 'Percent of students attending a <span style="text-decoration:underline;">Cyber Charter</span> school'; 
+	var title_pCyber = 'Percent change in the number of students attending a <span style="text-decoration:underline;">Cyber Charter</span> school, 2010 to 2013'; 
 
     L.tileLayer('https://dnv9my2eseobd.cloudfront.net/v3/cartodb.map-4xtxp73f/{z}/{x}/{y}.png', {
       attribution: 'Map by <a href="http://www.manetomapping.com">Michelle Schmitt</a> and Todd Vachon for <a href="http://www.newsworks.org">NewsWorks.org</a>;Data Analysis by<a href="http://www.researchforaction.org">Research for Action</a>'
@@ -30,7 +30,7 @@ var map;
 	
     var layerOptions_cybers = {
             query: "SELECT * FROM cybercharters",
-            tile_style: "#cybercharters{line-color: #FFF;line-opacity: 1;line-width: 1;polygon-opacity: 0.8;}#cybercharters [ pct_enroll_13 <= 18] {polygon-fill: #54278F;}#cybercharters [ pct_enroll_13 <= 7] {polygon-fill: #756BB1;}#cybercharters [ pct_enroll_13 <= 4] {polygon-fill: #9E9AC8;}#cybercharters [ pct_enroll_13 <= 2] { polygon-fill: #CBC9E2;}#cybercharters [ pct_enroll_13 <= 1] {polygon-fill: #F2F0F7;}",
+            tile_style: "#cybercharters{line-color: #FFF;line-opacity: .5;line-width: .5; polygon-opacity: 0.6;}#cybercharters [ pct_change_10_13 <= 600.0] {polygon-fill: #54278F;}#cybercharters [ pct_change_10_13 <= 283.33] {polygon-fill: #756BB1;}#cybercharters [ pct_change_10_13 <= 112.5] {polygon-fill: #9E9AC8;}#cybercharters [ pct_change_10_13 <= 46.15] { polygon-fill: #CBC9E2;}#cybercharters [ pct_change_10_13 <= 14.89] {polygon-fill: #F2F0F7;}",
 			interactivity: "labelname",
 			infowindow: false,
 			cartodb_logo: false	
