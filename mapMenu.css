@@ -284,8 +284,9 @@ background: -webkit-linear-gradient(#F9F9F9, #E1E1E1);
 		position: absolute;
 		left: 455px;
 		top: -1px;
-		
-		height: 25px;
+		font-size: 0.6em;
+		font-weight: bold;
+		height: 22px;
 }
 
 #admstuff {font-size: .9em; position: absolute; top: 80px; left: 5px;}
