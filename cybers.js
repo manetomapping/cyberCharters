@@ -23,7 +23,7 @@ var map;
 	var title_pCyber = 'Percent of students attending a <span style="text-decoration:underline;">Cyber Charter</span> school'; 
 
     L.tileLayer('https://dnv9my2eseobd.cloudfront.net/v3/cartodb.map-4xtxp73f/{z}/{x}/{y}.png', {
-      attribution: 'Map by <a href="http://www.manetomapping.com">Michelle Schmitt</a> and Todd Vachon for <a href="http://www.newsworks.org">NewsWorks.org</a>'
+      attribution: 'Map by <a href="http://www.manetomapping.com">Michelle Schmitt</a> and Todd Vachon for <a href="http://www.newsworks.org">NewsWorks.org</a>;Data Analysis by<a href="http://www.researchforaction.org">Research for Action</a>'
     }).addTo(map);
 	
 	var layerUrl_cybers = 'http://manetomapping.cartodb.com/api/v1/viz/cybercharters/viz.json';
@@ -96,26 +96,36 @@ var map;
 	function searchBoxClear(){
 		$("#tags").empty();
 	};
+	function infoTableClear(){
+		$("#infoTable").empty();
+	};
 	
-	searchBoxClear();
 
-$table = "<table id = 'resultTable'><td>nr</td><td>Geoid</td><td>Name</td><tr>";
+//$table = "<table id = 'resultTable'><td>2010</td><td>2013</td><td>% change</td><tr>"
+$table = "<div id = 'resultTable_container'>"
 
 	$(document).ready(function(){
 		$("button").click(function(){
 		var searchstring = $('#tags').val(); 
-		$.getJSON("http://manetomapping.cartodb.com/api/v2/sql?q=SELECT labelname, geoid  FROM cybercharters WHERE labelname ='" +searchstring+ "' LIMIT 1", function(data) {
-			$table += "<tr>";
-			$table += "<td>" + i + "</td>";
-
-			$table += "<td>" + data.rows[0].geoid + "</td>";
-			$table += "<td>" + data.rows[0].labelname + "</td>";
-			//$table += "<td>" + data.rows[0].endTime + "</td>";
-			//$table += "<td>" + data.rows[0].startArea + "</td>";
-			//$table += "<td>" + data.rows[0].duration + "</td>";
-			$table += "</tr>";
+		infoTableClear();
+		$.getJSON("http://manetomapping.cartodb.com/api/v2/sql?q=SELECT labelname, geoid, Total_Exp_Cyber_10, Total_Exp_Cyber_13, PCT_exp_change_10_13, Total_Cyber_10, Total_Cyber_13, Pct_change_10_13, Exp_reg13, Exp_spc13  FROM cybercharters WHERE labelname ='" +searchstring+ "' LIMIT 1", function(data) {
+			
+			$table += "<p>" + data.rows[0].labelname + "</p>";
+			$table += "<table id ='resultTable' ><tr><td></td><td>2010</td><td>2013</td><td>% change</td></tr>";
+			$table += "<tr><td>Cyber Charter Expenditures</td>";
+			$table += "<td>" + data.rows[0].total_exp_cyber_10  + "</td>";
+			$table += "<td>" + data.rows[0].total_exp_cyber_13 + "</td>";
+			$table += "<td>" + data.rows[0].pct_exp_change_10_13 + "</td>";
+			$table += "</tr><tr>";
+			$table += "<td>Cyber Charter Enrollment</td>";
+			$table += "<td>" + data.rows[0].total_cyber_10  + "</td>";
+			$table += "<td>" + data.rows[0].total_cyber_13 + "</td>";
+			$table += "<td>" + data.rows[0].pct_change_10_13 + "</td>";
+			$table += "</tr></table>";
+			$table += "<p>Per ADM expenditure for non-special CS in 2013" + data.rows[0].exp_reg13 + "</p>";
+			$table += "<p>Per ADM expenditure for special CS in 2013" + data.rows[0].exp_spc13 + "</p> </div>";
 			$('#infoTable').append($table);
-			$table = "<table id = 'resultTable'><td>nr</td><td>geoid</td><td>Name</td><tr>";
+			//$table = "<table id = 'resultTable'><td>2010</td><td>2013</td><td>% change</td><tr>";
 		});
 	 
 		});
