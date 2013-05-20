@@ -6,6 +6,28 @@ var map;
 	var bins = {};
 	var title = '';
 	
+	// clear all items from any previous intances
+	function legendClear(){
+		$("#legend").empty()
+	};
+	
+	function searchBoxClear(){
+		$("#tags").empty();
+	};
+	
+	function infoTableClear(){
+		$("#resultTable_container").empty();
+	};
+	
+	function infoContainerClear(){
+		$("#infocontainer").empty();
+	};
+
+	//Clear everything
+	//infoContainerClear();
+	infoTableClear();
+	searchBoxClear();
+	
     // initiate leaflet map
     map = new L.Map('map', { 
       center: [ 39.9,-77.7],
@@ -62,14 +84,7 @@ var map;
 	});
 	
 		
-	function legendClear(){
-		$("#legend").empty();
-	};
-	function infoTableClear(){
-		$("#infoTable").empty();
-	};
 
-	
 	function CartoDBLegend(bins,title){
 	  legendClear();
 	  $ = cartodb.$;
@@ -91,15 +106,6 @@ var map;
     }
 	
    
-//activating search using search string from search box  
-//
-	function searchBoxClear(){
-		$("#tags").empty();
-	};
-	function infoTableClear(){
-		$("#infoTable").empty();
-	};
-	
 
 //$table = "<table id = 'resultTable'><td>2010</td><td>2013</td><td>% change</td><tr>"
 $table = "<div id = 'resultTable_container'>"
