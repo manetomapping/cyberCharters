@@ -61,6 +61,10 @@ var map;
 	
     var layers = [];
 
+	
+	function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 	CartoDBLegend(bins_pCyber,title_pCyber);
 
@@ -90,8 +94,8 @@ var map;
 			$table += "<div id = 'SDName'><p><strong>" + data.rows[0].labelname + "</strong></p></div>";
 			$table += "<table id ='resultTable' ><tr><td></td><td><strong>2010</strong></td><td><strong>2013</strong></td><td><strong>Change</strong></td></tr>";
 			$table += "<tr><td>Cyber Charter Expenditures</td>";
-			$table += "<td>$" + data.rows[0].total_exp_cyber_10  + "</td>";
-			$table += "<td>$" + data.rows[0].total_exp_cyber_13 + "</td>";
+			$table += "<td>$" + numberWithCommas(data.rows[0].total_exp_cyber_10)  + "</td>";
+			$table += "<td>$" + numberWithCommas(data.rows[0].total_exp_cyber_13) + "</td>";
 			$table += "<td><strong>" + data.rows[0].pct_exp_change_10_13 + "%</strong></td>";
 			$table += "</tr><tr>";
 			$table += "<td>Cyber Charter Enrollment</td>";
@@ -156,8 +160,8 @@ $table = "<div id = 'resultTable_container'>";
 			$table += "<div id = 'SDName'><p><strong>" + data.rows[0].labelname + "</strong></p></div>";
 			$table += "<table id ='resultTable' ><tr><td></td><td><strong>2010</strong></td><td><strong>2013</strong></td><td><strong>Change</strong></td></tr>";
 			$table += "<tr><td>Cyber Charter Expenditures</td>";
-			$table += "<td>$" + data.rows[0].total_exp_cyber_10  + "</td>";
-			$table += "<td>$" + data.rows[0].total_exp_cyber_13 + "</td>";
+			$table += "<td>$" + numberWithCommas(data.rows[0].total_exp_cyber_10)  + "</td>";
+			$table += "<td>$" + numberWithCommas(data.rows[0].total_exp_cyber_13) + "</td>";
 			$table += "<td><strong>" + data.rows[0].pct_exp_change_10_13 + "%</strong></td>";
 			$table += "</tr><tr>";
 			$table += "<td>Cyber Charter Enrollment</td>";
