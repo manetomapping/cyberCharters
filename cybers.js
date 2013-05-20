@@ -16,7 +16,7 @@ var map;
 	};
 	
 	function infoTableClear(){
-		$("#resultTable_container").empty();
+		$("#infoTable").empty();
 	};
 	
 	function infoContainerClear(){
@@ -39,7 +39,7 @@ var map;
           "#9e2c27": "112.6 to 283.3%",
 		  "#f0433c": "46.3 to 112.5%",
 		  "#f4716b": "14.9 to 46.2%",
-		  "#f79e9b": "Less than 14.89%"
+		//  "#f79e9b": "Less than 14.89%"
         };
 
 	var title_pCyber = 'Percent change in estimated payments to <span style="text-decoration:underline;">Cyber Charters</span>, 2010 to 2013*'; 
@@ -108,15 +108,26 @@ var map;
    
 
 //$table = "<table id = 'resultTable'><td>2010</td><td>2013</td><td>% change</td><tr>"
-$table = "<div id = 'resultTable_container'>"
+$table = "<div id = 'resultTable_container'>";
 
-	$(document).ready(function(){
-		$("button").click(function(){
-		var searchstring = $('#tags').val(); 
-		infoTableClear();
+
+
+		$('#clearbutton').click(function(){
+			$('#infoTable').empty();
+			$('#resultTable_container').remove();
+			$('#tags').val(""); 
+			});
+
+
+		$('#searchbutton').click(function(){
+			//$('#infoTable').html("");
+			$('resultTable').empty();
+			$('#resultTable_container').html("");
+			//$('#tags').val(""); 
+			var searchstring = $('#tags').val(); 
 		$.getJSON("http://manetomapping.cartodb.com/api/v2/sql?q=SELECT labelname, geoid, Total_Exp_Cyber_10, Total_Exp_Cyber_13, PCT_exp_change_10_13, Total_Cyber_10, Total_Cyber_13, Pct_change_10_13, Exp_reg13, Exp_spc13  FROM cybercharters WHERE labelname ='" +searchstring+ "' LIMIT 1", function(data) {
 			
-			$table += "<p><strong>" + data.rows[0].labelname + "</strong></p>";
+			$table += "<div id = 'SDName'><p><strong>" + data.rows[0].labelname + "</strong></p></div>";
 			$table += "<table id ='resultTable' ><tr><td></td><td><strong>2010</strong></td><td><strong>2013</strong></td><td><strong>Change</strong></td></tr>";
 			$table += "<tr><td>Cyber Charter Expenditures</td>";
 			$table += "<td>$" + data.rows[0].total_exp_cyber_10  + "</td>";
@@ -132,12 +143,14 @@ $table = "<div id = 'resultTable_container'>"
 			$table += "Per ADM expenditure for non-special CS in 2013 $" + data.rows[0].exp_reg13 + "<br />";
 			$table += "Per ADM expenditure for special CS in 2013 $" + data.rows[0].exp_spc13 + "</div>";
 			$table += "</div>";
+			$('#infoTable').empty();
 			$('#infoTable').append($table);
+			$table = "";
+			$('#tags').val(""); 
 			//$table = "<table id = 'resultTable'><td>2010</td><td>2013</td><td>% change</td><tr>";
 		});
 	 
 		});
-	});
 
 
 //Hover event to show name of school district using the map
