@@ -76,14 +76,45 @@ var map;
 		showTooltip(data,pos)
 	})
 	  .on('featureOut', function(e, latlng, pos, data) {
-		document.body.style.cursor = "default";
+		document.body.style.cursor = "pointer";
 		hideTooltip();
 	})
-	
-	
+	  .on('featureClick', function(e, latlng, pos, data) {
+  			document.body.style.cursor = "pointer";
+			$('resultTable').empty();
+			$('#resultTable_container').html("");
+			var searchstring = data["labelname"]; 
+		
+		$.getJSON("http://manetomapping.cartodb.com/api/v2/sql?q=SELECT labelname, geoid, Total_Exp_Cyber_10, Total_Exp_Cyber_13, PCT_exp_change_10_13, Total_Cyber_10, Total_Cyber_13, Pct_change_10_13, Exp_reg13, Exp_spc13  FROM cybercharters WHERE labelname ='" +searchstring+ "' LIMIT 1", function(data) {
+			
+			$table += "<div id = 'SDName'><p><strong>" + data.rows[0].labelname + "</strong></p></div>";
+			$table += "<table id ='resultTable' ><tr><td></td><td><strong>2010</strong></td><td><strong>2013</strong></td><td><strong>Change</strong></td></tr>";
+			$table += "<tr><td>Cyber Charter Expenditures</td>";
+			$table += "<td>$" + data.rows[0].total_exp_cyber_10  + "</td>";
+			$table += "<td>$" + data.rows[0].total_exp_cyber_13 + "</td>";
+			$table += "<td><strong>" + data.rows[0].pct_exp_change_10_13 + "%</strong></td>";
+			$table += "</tr><tr>";
+			$table += "<td>Cyber Charter Enrollment</td>";
+			$table += "<td>" + data.rows[0].total_cyber_10  + "</td>";
+			$table += "<td>" + data.rows[0].total_cyber_13 + "</td>";
+			$table += "<td><strong>" + data.rows[0].pct_change_10_13 + "%</strong></td>";
+			$table += "</tr></table>";
+			$table += "<div id='admstuff'>";
+			$table += "Per ADM expenditure for non-special CS in 2013 $" + data.rows[0].exp_reg13 + "<br />";
+			$table += "Per ADM expenditure for special CS in 2013 $" + data.rows[0].exp_spc13 + "</div>";
+			$table += "</div>";
+			$('#infoTable').empty();
+			$('#infoTable').append($table);
+			$table = "";
+			$('#tags').val(""); 
+			//$table = "<table id = 'resultTable'><td>2010</td><td>2013</td><td>% change</td><tr>";
+		});
+  
+     });
+	  
+
 	});
 	
-		
 
 	function CartoDBLegend(bins,title){
 	  legendClear();
@@ -112,14 +143,9 @@ $table = "<div id = 'resultTable_container'>";
 
 
 
-		$('#clearbutton').click(function(){
-			$('#infoTable').empty();
-			$('#resultTable_container').remove();
-			$('#tags').val(""); 
-			});
-
 
 		$('#searchbutton').click(function(){
+		
 			//$('#infoTable').html("");
 			$('resultTable').empty();
 			$('#resultTable_container').html("");
