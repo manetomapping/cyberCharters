@@ -66,7 +66,7 @@ var map;
 		$("#legend").empty();
 	};
 	function infoTableClear(){
-		$("#table").empty();
+		$("#infoTable").empty();
 	};
 
 	
