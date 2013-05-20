@@ -35,24 +35,24 @@ var map;
     })
 
 	bins_pCyber = {
-  		  "#6b1e1b": "283.4% or more",
-          "#9e2c27": "112.6 to 283.3%",
-		  "#f0433c": "46.3 to 112.5%",
-		  "#f4716b": "14.9 to 46.2%",
-		//  "#f79e9b": "Less than 14.89%"
+  		  "#CA0020": "101% or more",
+          "#F4A582": "51 to 100%",
+		  "#BABABA": "0 to 50%",
+		  "#404040": "Less than 0%",
+
         };
 
 	var title_pCyber = 'Percent change in estimated payments to <span style="text-decoration:underline;">Cyber Charters</span>, 2010 to 2013*'; 
 
     L.tileLayer('http://{s}.tile.cloudmade.com/15ff4c5331ce43558da101738bb53492/72990/256/{z}/{x}/{y}.png', {
-      attribution: 'Map by <a href="http://www.manetomapping.com">Michelle Schmitt</a> and Todd Vachon for <a href="http://www.newsworks.org">NewsWorks.org</a>;Data Analysis by<a href="http://www.researchforaction.org">Research for Action</a>', key: '15ff4c5331ce43558da101738bb53492'
+      attribution: 'Map by <a href="http://www.manetomapping.com">Michelle Schmitt</a> and Todd Vachon for <a href="http://www.newsworks.org">NewsWorks.org</a>;Data Analysis by <a href="http://www.researchforaction.org">Research for Action</a>', key: '15ff4c5331ce43558da101738bb53492'
     }).addTo(map);
 	
 	var layerUrl_cybers = 'http://manetomapping.cartodb.com/api/v1/viz/cybercharters/viz.json';
 	
     var layerOptions_cybers = {
             query: "SELECT * FROM cybercharters",
-            tile_style: "#cybercharters{line-color: #666;line-opacity: .5;line-width: .5; polygon-opacity: 0.6;}#cybercharters [ pct_change_10_13 <= 600.0] {polygon-fill: #6b1e1b;}#cybercharters [ pct_change_10_13 <= 283.33] {polygon-fill: #9e2c27;}#cybercharters [ pct_change_10_13 <= 112.5] {polygon-fill: #f0433c;}#cybercharters [ pct_change_10_13 <= 46.15] { polygon-fill: #f4716b;}#cybercharters [ pct_change_10_13 <= 14.89] {polygon-fill: #ccc;}",
+            tile_style: "#cybercharters{line-color: #666;line-opacity: .5;line-width: .5; polygon-opacity: 0.6;}#cybercharters [ pct_change_10_13 <= 600.0] {polygon-fill: #CA0020;}#cybercharters [ pct_change_10_13 <= 100] {polygon-fill: #F4A582;}#cybercharters [ pct_change_10_13 <= 50] {polygon-fill: #BABABA;}#cybercharters [ pct_change_10_13 <= 0] { polygon-fill: #404040;}",
 			interactivity: "labelname",
 			infowindow: false,
 			cartodb_logo: false	
