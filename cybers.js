@@ -155,6 +155,7 @@ $table = "<div id = 'resultTable_container'>";
 			$('#resultTable_container').html("");
 			//$('#tags').val(""); 
 			var searchstring = $('#tags').val(); 
+			layers[0].setCartoCSS("#cybercharters{line-color: #666;line-opacity: .5;line-width: .5; polygon-opacity: 0.6;}#cybercharters [ pct_change_10_13 <= 600.0] {polygon-fill: #6b1e1b;}#cybercharters [ pct_change_10_13 <= 100] {polygon-fill: #f0433c;}#cybercharters [ pct_change_10_13 <= 50] {polygon-fill: #f79e9b;}#cybercharters [ pct_change_10_13 <= 0] { polygon-fill: #ccc;} #cybercharters [ labelname = '" +searchstring+ "'] {line-color: #FFE303;line-color: #666;line-opacity: .8;line-width: 1.5;}");
 		$.getJSON("http://manetomapping.cartodb.com/api/v2/sql?q=SELECT labelname, geoid, Total_Exp_Cyber_10, Total_Exp_Cyber_13, PCT_exp_change_10_13, Total_Cyber_10, Total_Cyber_13, Pct_change_10_13, Exp_reg13, Exp_spc13, pct_enroll_13  FROM cybercharters WHERE labelname ='" +searchstring+ "' LIMIT 1", function(data) {
 			
 			$table += "<div id = 'SDName'><p><strong>" + data.rows[0].labelname + "</strong></p></div>";
