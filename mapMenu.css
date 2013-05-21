@@ -9,9 +9,9 @@ html, body {
 	color: #444;
 	}
 	
-    #map { width: 600px; height:650px; background: black; }
+    #map { width: 600px; height:670px; background: black; }
            
-                
+body a, leaflet-control-attribution, leaflet-control {color: #385074}               
 
 #mapheader {position: absolute; top: 85; left: 50;}
 
@@ -29,7 +29,7 @@ html, body {
 #title {
 		
 		padding: 0 0 0 120px;
-		color: #444;
+		color: #385074;
 		position: absolute; 
 		top: 0; 
 		left: 0;
@@ -49,7 +49,7 @@ box-shadow: 0px 3px 9px 2px rgba(0,0,0,0.5);
 }
 
 #title h1 {font-weight: bold; font-size: 19px; margin-bottom: 2px;}
-#title p {color: #444; font-weight: bold; font-size: 11px; margin-top: 2px;}
+#title p {color: #385074; font-weight: bold; font-size: 11px; margin-top: 2px;}
 
 
 
@@ -205,10 +205,10 @@ font-family: "Helvetica",Arial;
 #resultTable {
 	width: 600px; 
 	background-color: none;
-	min-height: 220px;
+	line-height: .9em;
 	padding: 0 0 5px 0;
 	position: relative;
-	top: -20px;
+	top: -25px;
 	font-size: 0.9em;
 }
 
@@ -219,41 +219,35 @@ font-family: "Helvetica",Arial;
 	height:55px; 
 	width: 580px;
 	position: relative;
-	top: 30px;
+	top: 25px;
 	margin-left: 5px;
-	
+	z-index: 99; 
 	
 	}
 	
 #infocontainer {
 			width: 590px;
 			height: 240px;
+			background: rgb(255, 255, 255); /* The Fallback */
 			background-color: rgba(255,255,255,0.75);
-						/*
-background: -webkit-linear-gradient(#F9F9F9, #E1E1E1); 
-			background: -moz-linear-gradient(#F9F9F9, #E1E1E1);
-			background: -o-linear-gradient(#F9F9F9, #E1E1E1);
-            background: linear-gradient(#F9F9F9,#E1E1E1); 
-*/
 			z-index: 3; 
 			font-family: Arial, Helvetica, sans-serif;
 			padding: 5px 0 0 10px;
-			/*
--moz-box-shadow:    inset 0 0 5px #000000;
-			-webkit-box-shadow: inset 0 0 5px #000000;
-			box-shadow:         inset 0 0 5px #000000;
-*/
-	position: relative;
-	top: -205px;
+			position: relative;
+			top: -230px;
 }
 	
 .ui-widget {
-	position: absolute;
+	/*
+position: absolute;
 	top: -80px;
 	left: -40px;
-	z-index: 4;
+	z-index: 99; 
+*/
 	font-size: .9em;
 }
+
+
 
 .ui-menu-item {font-size: 0.6em;}
 
@@ -268,7 +262,9 @@ background: -webkit-linear-gradient(#F9F9F9, #E1E1E1);
 		padding-left: 15px;
 		width: 450px;
 		color: #444;
-		font-size: 0.9em;	
+		font-size: 0.9em;
+		position: absolute;
+		top: -1px;	
 }
 
 #searchbutton {
@@ -286,13 +282,14 @@ background: -webkit-linear-gradient(#F9F9F9, #E1E1E1);
 		top: -1px;
 		font-size: 0.6em;
 		font-weight: bold;
-		height: 22px;
+		height: 21px;
 }
 
 #admstuff {font-size: .9em; position: absolute; top: 80px; left: 5px;}
 
+#infolink {font-size: .85em;}
 
-
+#tooltip p {margin:5px 5px 10px 5px;}
 
 /* Custom scrollbars for webkit - forces scrollbar on Mountain Lion*/
 ::-webkit-scrollbar {
