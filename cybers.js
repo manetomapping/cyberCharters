@@ -38,8 +38,7 @@ var map;
   		  "#6b1e1b": "+101% or more",
           "#9e2c27": "+51 to 100%",
 		  "#f0433c": "+1 to 50%",
-		  "#ccc": "No change/decline",
-
+		  "#ccc": "No change/decline"
         };
 
 	var title_pCyber = 'KEY: Percent change in estimated payments to cyber charters<br><a href="http://www.manetomapping.com/clients/newsworks/cybers/RFA_dataInfo.pdf" target="_blank"> More about this map</a>'; 
@@ -93,19 +92,19 @@ var map;
 			
 			$table += "<div id = 'SDName'><p><strong>" + data.rows[0].labelname + "</strong></p></div>";
 			$table += "<table id ='resultTable' ><tr><td></td><td><strong>2010</strong></td><td><strong>2013</strong></td><td><strong>Change</strong></td></tr>";
-			$table += "<tr><td>Cyber Charter Expenditures</td>";
-			$table += "<td>$" + numberWithCommas(data.rows[0].total_exp_cyber_10)  + "</td>";
-			$table += "<td>$" + numberWithCommas(data.rows[0].total_exp_cyber_13) + "</td>";
-			$table += "<td><strong>" + data.rows[0].pct_exp_change_10_13 + "%</strong></td>";
+			$table += "<tr><td>Estimated payments to cyber charters</td>";
+			$table += "<td>$" + numberWithCommas(Math.round(data.rows[0].total_exp_cyber_10))  + "</td>";
+			$table += "<td>$" + numberWithCommas(Math.round(data.rows[0].total_exp_cyber_13)) + "</td>";
+			$table += "<td><strong>" + Number((data.rows[0].pct_exp_change_10_13).toFixed(1)) + "%</strong></td>";
 			$table += "</tr><tr>";
-			$table += "<td>Cyber Charter Enrollment</td>";
+			$table += "<td>Cyber charter enrollment</td>";
 			$table += "<td>" + data.rows[0].total_cyber_10  + "</td>";
 			$table += "<td>" + data.rows[0].total_cyber_13 + "</td>";
-			$table += "<td><strong>" + data.rows[0].pct_change_10_13 + "%</strong></td>";
+			$table += "<td><strong>" + Number((data.rows[0].pct_change_10_13).toFixed(1)) + "%</strong></td>";
 			$table += "</tr></table>";
 			$table += "<div id='admstuff'>";
-			$table += "Per ADM expenditure for non-special CS in 2013 $" + data.rows[0].exp_reg13 + "<br />";
-			$table += "Per ADM expenditure for special CS in 2013 $" + data.rows[0].exp_spc13 + "</div>";
+			$table += "2013 per-pupil payment to charters/cybers, regular education: $" + numberWithCommas(Math.round(data.rows[0].exp_reg13)) + "<br />";
+			$table += "2013 per-pupil payment to charters/cybers, special education: $" + numberWithCommas(Math.round(data.rows[0].exp_spc13))+ "</div>";
 			$table += "</div>";
 			$('#infoTable').empty();
 			$('#infoTable').append($table);
@@ -159,19 +158,19 @@ $table = "<div id = 'resultTable_container'>";
 			
 			$table += "<div id = 'SDName'><p><strong>" + data.rows[0].labelname + "</strong></p></div>";
 			$table += "<table id ='resultTable' ><tr><td></td><td><strong>2010</strong></td><td><strong>2013</strong></td><td><strong>Change</strong></td></tr>";
-			$table += "<tr><td>Cyber Charter Expenditures</td>";
-			$table += "<td>$" + numberWithCommas(data.rows[0].total_exp_cyber_10)  + "</td>";
-			$table += "<td>$" + numberWithCommas(data.rows[0].total_exp_cyber_13) + "</td>";
-			$table += "<td><strong>" + data.rows[0].pct_exp_change_10_13 + "%</strong></td>";
+			$table += "<tr><td>Estimated payments to cyber charters</td>";
+			$table += "<td>$" + numberWithCommas(Math.round(data.rows[0].total_exp_cyber_10)) + "</td>";
+			$table += "<td>$" + numberWithCommas(Math.round(data.rows[0].total_exp_cyber_13)) + "</td>";
+			$table += "<td><strong>" + Number((data.rows[0].pct_exp_change_10_13).toFixed(1)) + "%</strong></td>";
 			$table += "</tr><tr>";
-			$table += "<td>Cyber Charter Enrollment</td>";
+			$table += "<td>Cyber charter enrollment</td>";
 			$table += "<td>" + data.rows[0].total_cyber_10  + "</td>";
 			$table += "<td>" + data.rows[0].total_cyber_13 + "</td>";
-			$table += "<td><strong>" + data.rows[0].pct_change_10_13 + "%</strong></td>";
+			$table += "<td><strong>" +  Number((data.rows[0].pct_change_10_13).toFixed(1)) + "%</strong></td>";
 			$table += "</tr></table>";
 			$table += "<div id='admstuff'>";
-			$table += "Per ADM expenditure for non-special CS in 2013 $" + data.rows[0].exp_reg13 + "<br />";
-			$table += "Per ADM expenditure for special CS in 2013 $" + data.rows[0].exp_spc13 + "</div>";
+			$table += "2013 per-pupil payment to charters/cybers, regular education: $" + numberWithCommas(Math.round(data.rows[0].exp_reg13)) + "<br />";
+			$table += "2013 per-pupil payment to charters/cybers, special education: $" + numberWithCommas(Math.round(data.rows[0].exp_spc13)) + "</div>";
 			$table += "</div>";
 			$('#infoTable').empty();
 			$('#infoTable').append($table);
