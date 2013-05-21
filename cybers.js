@@ -36,12 +36,12 @@ var map;
 
 	bins_pCyber = {
   		  "#6b1e1b": "+101% or more",
-          "#9e2c27": "+51 to 100%",
-		  "#f0433c": "+1 to 50%",
+          "#f0433c": "+51 to 100%",
+		  "#f79e9b": "+1 to 50%",
 		  "#ccc": "No change/decline"
         };
 
-	var title_pCyber = 'KEY: Percent change in estimated payments to cyber charters<br><a href="http://www.manetomapping.com/clients/newsworks/cybers/RFA_dataInfo.pdf" target="_blank"> More about this map</a>'; 
+	var title_pCyber = 'KEY: Percent change in estimated payments to cyber charters <span id="infolink"><a href="http://www.manetomapping.com/clients/newsworks/cybers/RFA_dataInfo.pdf" target="_blank"> More about this map</a></span>'; 
 
     L.tileLayer('http://{s}.tile.cloudmade.com/15ff4c5331ce43558da101738bb53492/72990/256/{z}/{x}/{y}.png', {
       attribution: 'Map by <a href="http://www.manetomapping.com">Michelle Schmitt</a> and Todd Vachon for <a href="http://www.newsworks.org">NewsWorks.org</a>;Data Analysis by <a href="http://www.researchforaction.org">Research for Action</a>', key: '15ff4c5331ce43558da101738bb53492'
@@ -51,7 +51,7 @@ var map;
 	
     var layerOptions_cybers = {
             query: "SELECT * FROM cybercharters",
-            tile_style: "#cybercharters{line-color: #666;line-opacity: .5;line-width: .5; polygon-opacity: 0.6;}#cybercharters [ pct_change_10_13 <= 600.0] {polygon-fill: #6b1e1b;}#cybercharters [ pct_change_10_13 <= 100] {polygon-fill: #9e2c27;}#cybercharters [ pct_change_10_13 <= 50] {polygon-fill: #f0433c;}#cybercharters [ pct_change_10_13 <= 0] { polygon-fill: #ccc;}",
+            tile_style: "#cybercharters{line-color: #666;line-opacity: .5;line-width: .5; polygon-opacity: 0.6;}#cybercharters [ pct_change_10_13 <= 600.0] {polygon-fill: #6b1e1b;}#cybercharters [ pct_change_10_13 <= 100] {polygon-fill: #f0433c;}#cybercharters [ pct_change_10_13 <= 50] {polygon-fill: #f79e9b;}#cybercharters [ pct_change_10_13 <= 0] { polygon-fill: #ccc;}",
 			interactivity: "labelname",
 			infowindow: false,
 			cartodb_logo: false	
@@ -90,7 +90,7 @@ var map;
 		
 		$.getJSON("http://manetomapping.cartodb.com/api/v2/sql?q=SELECT labelname, geoid, Total_Exp_Cyber_10, Total_Exp_Cyber_13, PCT_exp_change_10_13, Total_Cyber_10, Total_Cyber_13, Pct_change_10_13, Exp_reg13, Exp_spc13, PCT_enroll_13  FROM cybercharters WHERE labelname ='" +searchstring+ "' LIMIT 1", function(data) {
 			
-			$table += "<div id = 'SDName'><p><strong>" + data.rows[0].labelname + "</strong></p></div>";
+			$table += "<div id = 'SDName'><p><strong>" + data.rows[0].labelname + ":</strong></p></div>";
 			$table += "<table id ='resultTable' ><tr><td></td><td><strong>2010</strong></td><td><strong>2013</strong></td><td><strong>Change</strong></td></tr>";
 			$table += "<tr><td>Estimated payments to cyber charters</td>";
 			$table += "<td>$" + numberWithCommas(Math.round(data.rows[0].total_exp_cyber_10))  + "</td>";
@@ -103,9 +103,9 @@ var map;
 			$table += "<td><strong>" + Number((data.rows[0].pct_change_10_13).toFixed(1)) + "%</strong></td>";
 			$table += "</tr></table>";
 			$table += "<div id='admstuff'>";
-			$table += "2013 Pct. of all public school students attending cybers:" + Number((data.rows[0].pct_enroll_13).toFixed(1)) + "%<br />";
-			$table += "2013 per-pupil payment to charters/cybers, regular education: $" + numberWithCommas(Math.round(data.rows[0].exp_reg13)) + "<br />";
-			$table += "2013 per-pupil payment to charters/cybers, special education: $" + numberWithCommas(Math.round(data.rows[0].exp_spc13))+ "</div>";
+			$table += "2013 Pct. of all public school students attending cybers:<strong>" + Number((data.rows[0].pct_enroll_13).toFixed(1)) + "%</strong><br />";
+			$table += "2013 per-pupil payment to charters/cybers, regular education: <strong>$" + numberWithCommas(Math.round(data.rows[0].exp_reg13)) + "</strong><br />";
+			$table += "2013 per-pupil payment to charters/cybers, special education: <strong>$" + numberWithCommas(Math.round(data.rows[0].exp_spc13))+ "</strong></div>";
 			$table += "</div>";
 			$('#infoTable').empty();
 			$('#infoTable').append($table);

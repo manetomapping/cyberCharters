@@ -11,7 +11,7 @@ html, body {
 	
     #map { width: 600px; height:650px; background: black; }
            
-                
+body a, leaflet-control-attribution, leaflet-control {color: #385074}               
 
 #mapheader {position: absolute; top: 85; left: 50;}
 
@@ -29,7 +29,7 @@ html, body {
 #title {
 		
 		padding: 0 0 0 120px;
-		color: #444;
+		color: #385074;
 		position: absolute; 
 		top: 0; 
 		left: 0;
@@ -49,7 +49,7 @@ box-shadow: 0px 3px 9px 2px rgba(0,0,0,0.5);
 }
 
 #title h1 {font-weight: bold; font-size: 19px; margin-bottom: 2px;}
-#title p {color: #444; font-weight: bold; font-size: 11px; margin-top: 2px;}
+#title p {color: #385074; font-weight: bold; font-size: 11px; margin-top: 2px;}
 
 
 
@@ -205,7 +205,7 @@ font-family: "Helvetica",Arial;
 #resultTable {
 	width: 600px; 
 	background-color: none;
-	min-height: 220px;
+	
 	padding: 0 0 5px 0;
 	position: relative;
 	top: -20px;
@@ -244,7 +244,7 @@ background: -webkit-linear-gradient(#F9F9F9, #E1E1E1);
 			box-shadow:         inset 0 0 5px #000000;
 */
 	position: relative;
-	top: -205px;
+	top: -220px;
 }
 	
 .ui-widget {
@@ -291,8 +291,9 @@ background: -webkit-linear-gradient(#F9F9F9, #E1E1E1);
 
 #admstuff {font-size: .9em; position: absolute; top: 80px; left: 5px;}
 
+#infolink {font-size: .85em;}
 
-
+#tooltip p {margin:5px 5px 10px 5px;}
 
 /* Custom scrollbars for webkit - forces scrollbar on Mountain Lion*/
 ::-webkit-scrollbar {
