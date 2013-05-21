@@ -88,7 +88,7 @@ var map;
 			$('#resultTable_container').html("");
 			var searchstring = data["labelname"]; 
 		
-		$.getJSON("http://manetomapping.cartodb.com/api/v2/sql?q=SELECT labelname, geoid, Total_Exp_Cyber_10, Total_Exp_Cyber_13, PCT_exp_change_10_13, Total_Cyber_10, Total_Cyber_13, Pct_change_10_13, Exp_reg13, Exp_spc13  FROM cybercharters WHERE labelname ='" +searchstring+ "' LIMIT 1", function(data) {
+		$.getJSON("http://manetomapping.cartodb.com/api/v2/sql?q=SELECT labelname, geoid, Total_Exp_Cyber_10, Total_Exp_Cyber_13, PCT_exp_change_10_13, Total_Cyber_10, Total_Cyber_13, Pct_change_10_13, Exp_reg13, Exp_spc13, PCT_enroll_13  FROM cybercharters WHERE labelname ='" +searchstring+ "' LIMIT 1", function(data) {
 			
 			$table += "<div id = 'SDName'><p><strong>" + data.rows[0].labelname + "</strong></p></div>";
 			$table += "<table id ='resultTable' ><tr><td></td><td><strong>2010</strong></td><td><strong>2013</strong></td><td><strong>Change</strong></td></tr>";
@@ -103,6 +103,7 @@ var map;
 			$table += "<td><strong>" + Number((data.rows[0].pct_change_10_13).toFixed(1)) + "%</strong></td>";
 			$table += "</tr></table>";
 			$table += "<div id='admstuff'>";
+			$table += "2013 Pct. of all public school students attending cybers:" + Number((data.rows[0].pct_enroll_13).toFixed(1)) + "%<br />";
 			$table += "2013 per-pupil payment to charters/cybers, regular education: $" + numberWithCommas(Math.round(data.rows[0].exp_reg13)) + "<br />";
 			$table += "2013 per-pupil payment to charters/cybers, special education: $" + numberWithCommas(Math.round(data.rows[0].exp_spc13))+ "</div>";
 			$table += "</div>";
@@ -154,7 +155,7 @@ $table = "<div id = 'resultTable_container'>";
 			$('#resultTable_container').html("");
 			//$('#tags').val(""); 
 			var searchstring = $('#tags').val(); 
-		$.getJSON("http://manetomapping.cartodb.com/api/v2/sql?q=SELECT labelname, geoid, Total_Exp_Cyber_10, Total_Exp_Cyber_13, PCT_exp_change_10_13, Total_Cyber_10, Total_Cyber_13, Pct_change_10_13, Exp_reg13, Exp_spc13  FROM cybercharters WHERE labelname ='" +searchstring+ "' LIMIT 1", function(data) {
+		$.getJSON("http://manetomapping.cartodb.com/api/v2/sql?q=SELECT labelname, geoid, Total_Exp_Cyber_10, Total_Exp_Cyber_13, PCT_exp_change_10_13, Total_Cyber_10, Total_Cyber_13, Pct_change_10_13, Exp_reg13, Exp_spc13, pct_enroll_13  FROM cybercharters WHERE labelname ='" +searchstring+ "' LIMIT 1", function(data) {
 			
 			$table += "<div id = 'SDName'><p><strong>" + data.rows[0].labelname + "</strong></p></div>";
 			$table += "<table id ='resultTable' ><tr><td></td><td><strong>2010</strong></td><td><strong>2013</strong></td><td><strong>Change</strong></td></tr>";
@@ -169,6 +170,7 @@ $table = "<div id = 'resultTable_container'>";
 			$table += "<td><strong>" +  Number((data.rows[0].pct_change_10_13).toFixed(1)) + "%</strong></td>";
 			$table += "</tr></table>";
 			$table += "<div id='admstuff'>";
+			$table += "2013 Pct. of all public school students attending cybers:" + Number((data.rows[0].pct_enroll_13).toFixed(1)) + "%<br />";
 			$table += "2013 per-pupil payment to charters/cybers, regular education: $" + numberWithCommas(Math.round(data.rows[0].exp_reg13)) + "<br />";
 			$table += "2013 per-pupil payment to charters/cybers, special education: $" + numberWithCommas(Math.round(data.rows[0].exp_spc13)) + "</div>";
 			$table += "</div>";
