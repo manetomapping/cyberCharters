@@ -103,7 +103,7 @@ var map;
 			$table += "<td><strong>" + Number((data.rows[0].pct_change_10_13).toFixed(1)) + "%</strong></td>";
 			$table += "</tr></table>";
 			$table += "<div id='admstuff'>";
-			$table += "2013 Pct. of all public school students attending cybers: <strong>" + Number((data.rows[0].pct_enroll_13).toFixed(1)) + "%</strong><br />";
+			$table += "2013 percent of all public school students attending cybers: <strong>" + Number((data.rows[0].pct_enroll_13).toFixed(1)) + "%</strong><br />";
 			$table += "2013 per-pupil payment to charters/cybers, regular education: <strong>$" + numberWithCommas(Math.round(data.rows[0].exp_reg13)) + "</strong><br />";
 			$table += "2013 per-pupil payment to charters/cybers, special education: <strong>$" + numberWithCommas(Math.round(data.rows[0].exp_spc13))+ "</strong></div>";
 			$table += "</div>";
