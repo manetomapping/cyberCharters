@@ -35,14 +35,14 @@ var map;
     })
 
 	bins_pCyber = {
-  		  "#6b1e1b": "101% or more",
-          "#9e2c27": "51 to 100%",
-		  "#f0433c": "0 to 50%",
-		  "#ccc": "Less than 0%",
+  		  "#6b1e1b": "+101% or more",
+          "#9e2c27": "+51 to 100%",
+		  "#f0433c": "+1 to 50%",
+		  "#ccc": "No change/decline",
 
         };
 
-	var title_pCyber = 'Percent change in estimated payments to <span style="text-decoration:underline;">Cyber Charters</span>, 2010 to 2013*'; 
+	var title_pCyber = 'KEY: Percent change in estimated payments to cyber charters<br><a href="http://www.manetomapping.com/clients/newsworks/cybers/RFA_dataInfo.pdf" target="_blank"> More about this map</a>'; 
 
     L.tileLayer('http://{s}.tile.cloudmade.com/15ff4c5331ce43558da101738bb53492/72990/256/{z}/{x}/{y}.png', {
       attribution: 'Map by <a href="http://www.manetomapping.com">Michelle Schmitt</a> and Todd Vachon for <a href="http://www.newsworks.org">NewsWorks.org</a>;Data Analysis by <a href="http://www.researchforaction.org">Research for Action</a>', key: '15ff4c5331ce43558da101738bb53492'
