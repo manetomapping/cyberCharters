@@ -221,13 +221,14 @@ font-family: "Helvetica",Arial;
 	position: relative;
 	top: 25px;
 	margin-left: 5px;
-	
+	z-index: 99; 
 	
 	}
 	
 #infocontainer {
 			width: 590px;
 			height: 240px;
+			background: rgb(255, 255, 255); /* The Fallback */
 			background-color: rgba(255,255,255,0.75);
 			z-index: 3; 
 			font-family: Arial, Helvetica, sans-serif;
@@ -237,12 +238,16 @@ font-family: "Helvetica",Arial;
 }
 	
 .ui-widget {
-	position: absolute;
+	/*
+position: absolute;
 	top: -80px;
 	left: -40px;
-	z-index: 4;
+	z-index: 99; 
+*/
 	font-size: .9em;
 }
+
+
 
 .ui-menu-item {font-size: 0.6em;}
 
@@ -257,7 +262,9 @@ font-family: "Helvetica",Arial;
 		padding-left: 15px;
 		width: 450px;
 		color: #444;
-		font-size: 0.9em;	
+		font-size: 0.9em;
+		position: absolute;
+		top: -1px;	
 }
 
 #searchbutton {
@@ -275,7 +282,7 @@ font-family: "Helvetica",Arial;
 		top: -1px;
 		font-size: 0.6em;
 		font-weight: bold;
-		height: 22px;
+		height: 21px;
 }
 
 #admstuff {font-size: .9em; position: absolute; top: 80px; left: 5px;}
