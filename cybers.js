@@ -41,8 +41,6 @@ var map;
 		  "#ccc": "No change/decline"
         };
 
-		
-		
 	var title_pCyber = 'KEY: Percent change in estimated payments to cyber charters<br><a href="http://www.manetomapping.com/clients/newsworks/cybers/RFA_dataInfo.pdf" target="_blank"> More about this map</a>'; 
 
     L.tileLayer('http://{s}.tile.cloudmade.com/15ff4c5331ce43558da101738bb53492/72990/256/{z}/{x}/{y}.png', {
@@ -59,7 +57,7 @@ var map;
 			cartodb_logo: false	
 	}
 
-
+	
     var layers = [];
 
 	
@@ -157,10 +155,6 @@ $table = "<div id = 'resultTable_container'>";
 			$('#resultTable_container').html("");
 			//$('#tags').val(""); 
 			var searchstring = $('#tags').val(); 
-		var sql = new cartodb.SQL({ user: 'manetomapping' });
-      sql.getBounds("SELECT * FROM cybercharters WHERE labelname ='" +searchstring+ "' LIMIT 1").done(function(bounds) {
-        map.fitBounds(bounds)
-      });
 		$.getJSON("http://manetomapping.cartodb.com/api/v2/sql?q=SELECT labelname, geoid, Total_Exp_Cyber_10, Total_Exp_Cyber_13, PCT_exp_change_10_13, Total_Cyber_10, Total_Cyber_13, Pct_change_10_13, Exp_reg13, Exp_spc13, pct_enroll_13  FROM cybercharters WHERE labelname ='" +searchstring+ "' LIMIT 1", function(data) {
 			
 			$table += "<div id = 'SDName'><p><strong>" + data.rows[0].labelname + "</strong></p></div>";
