@@ -35,10 +35,10 @@ var map;
     })
 
 	bins_pCyber = {
-  		  "#CA0020": "101% or more",
-          "#F4A582": "51 to 100%",
-		  "#BABABA": "0 to 50%",
-		  "#404040": "Less than 0%",
+  		  "#6b1e1b": "101% or more",
+          "#9e2c27": "51 to 100%",
+		  "#f0433c": "0 to 50%",
+		  "#ccc": "Less than 0%",
 
         };
 
@@ -52,7 +52,7 @@ var map;
 	
     var layerOptions_cybers = {
             query: "SELECT * FROM cybercharters",
-            tile_style: "#cybercharters{line-color: #666;line-opacity: .5;line-width: .5; polygon-opacity: 0.6;}#cybercharters [ pct_change_10_13 <= 600.0] {polygon-fill: #CA0020;}#cybercharters [ pct_change_10_13 <= 100] {polygon-fill: #F4A582;}#cybercharters [ pct_change_10_13 <= 50] {polygon-fill: #BABABA;}#cybercharters [ pct_change_10_13 <= 0] { polygon-fill: #404040;}",
+            tile_style: "#cybercharters{line-color: #666;line-opacity: .5;line-width: .5; polygon-opacity: 0.6;}#cybercharters [ pct_change_10_13 <= 600.0] {polygon-fill: #6b1e1b;}#cybercharters [ pct_change_10_13 <= 100] {polygon-fill: #9e2c27;}#cybercharters [ pct_change_10_13 <= 50] {polygon-fill: #f0433c;}#cybercharters [ pct_change_10_13 <= 0] { polygon-fill: #ccc;}",
 			interactivity: "labelname",
 			infowindow: false,
 			cartodb_logo: false	
